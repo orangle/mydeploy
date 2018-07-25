@@ -64,7 +64,7 @@ Download_caddy(){
 	chmod +x caddy
 }
 Service_caddy(){
-	if ! wget --no-check-certificate https://raw.githubusercontent.com/orangle/mydeploy/master/shell/caddy/caddy.service -O /etc/systemd/system/; then
+	if ! wget --no-check-certificate https://raw.githubusercontent.com/orangle/mydeploy/master/shell/caddy/caddy.service -O /etc/systemd/system/caddy.service; then
 		echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy服务 管理脚本下载失败 !" && exit 1
 	fi
 	chmod +x /etc/systemd/system/caddy.service
@@ -125,3 +125,4 @@ case "$action" in
     echo "输入错误 !"
     echo "用法: {install | uninstall}"
     ;;
+esac
