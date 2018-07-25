@@ -1,0 +1,11 @@
+g.orangleliu.info {
+ gzip
+ tls orangleliu@gmail.com
+ basicauth / china china
+ log /tmp/google.access.log
+ proxy / https://www.google.ca {
+ header_upstream X-Real-IP {remote}
+ header_upstream User-Agent {>User-Agent}
+ header_upstream Accept-Language en-US
+ header_upstream Accept-Encoding identity
+}
