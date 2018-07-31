@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: true
+  vars:
+    downurl: https://github.com/prometheus/node_exporter/releases/download/v0.16.0/node_exporter-0.16.0.linux-amd64.tar.gz
+    binname: node_exporter-0.16.0.linux-amd64
+  tasks:
+    - name: Download Package
+      get_url: url={{downurl}}  dest=/tmp/node_exporter.tar.gz
+    - name: Extract archive
+      unarchive: src=/tmp/node_exporter.tar.gz dest=/tmp/
+    - name: Move to /usr/local
+      command: mv /tmp/{{binname}}/node_exporter  /usr/local/
+    - name: copy system serivce file
+      template:
+        src: node_exporter.j2
+        dest: /usr/lib/systemd/system/node_exporter.service
+    - name: Start
+      systemd: state=started name=node_exporter
+    - name: Auto Start
+      systemd: enabled=yes name=node_exporter
