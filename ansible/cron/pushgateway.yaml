@@ -1,0 +1,12 @@
+---
+- hosts: all
+  vars:
+    push_host: push.com
+    jobname: orangleliu
+  tasks:
+    - name: set cron
+      cron: 
+        name: "push-metrics"
+        minute: "*/2"
+        backup: "yes"
+        job: 'curl -s http://localhost:9100/metrics | grep -v "\(\(^\| \)go_\|http_request\|http_requests\|http_response\|process_\)" | curl --data-binary @- http://{{push_host}}:9091/metrics/job/{{jobname}}/instance/{{inventory_hostname}}:9100  > /dev/null 2>&1'
