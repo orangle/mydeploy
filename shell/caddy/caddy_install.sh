@@ -58,6 +58,7 @@ Download_caddy(){
 	fi
 	[[ ! -e "caddy_linux.tar.gz" ]] && echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy 下载失败 !" && exit 1
 	tar zxf "caddy_linux.tar.gz"
+	exit 1
 	rm -rf "caddy_linux.tar.gz"
 	[[ ! -e ${caddy_file} ]] && echo -e "${Error_font_prefix}[错误]${Font_suffix} Caddy 解压失败或压缩文件错误 !" && exit 1
 	rm -rf LICENSES.txt
@@ -134,3 +135,4 @@ case "$action" in
     echo "输入错误 !"
     echo "用法: {install | uninstall}"
     ;;
+esac
