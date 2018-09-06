@@ -23,7 +23,7 @@ rm -rf gogs_0.11.53_linux_amd64.tar.gz
 ```
 [service]
 DISABLE_REGISTRATION   = true
-REQUIRE_SIGNIN_VIEW    = true
+REQUIRE_SIGNIN_VIEW    = false
 
 [admin]
 ; Disable regular (non-admin) users to create organizations
@@ -63,3 +63,11 @@ HTTP_PORT        = 8000
 HTTP_ADDR        = 127.0.0.1
 ROOT_URL         = https://git.xxx.com/
 ```
+
+### 使用经验
+
+增加用户体验的配置和改进等。 [配置手册地址](https://gogs.io/docs/advanced/configuration_cheat_sheet)
+
+
+
+
