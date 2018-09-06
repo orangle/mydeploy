@@ -21,6 +21,7 @@ g.orangleliu.info {
 启动
 ```
 /etc/init.d/caddy status
+/etc/init.d/caddy start 
 ```
 
 ufw开启 443 端口
